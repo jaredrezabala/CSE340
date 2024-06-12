@@ -4,3 +4,99 @@
 *:after {
   box-sizing: border-box;
 }
+
+#top-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.siteName a {
+  font-size: 40px;
+  text-decoration: none;
+  color: black;
+}
+
+#tools a {
+  text-decoration: none;
+  padding: 1rem;
+  color: black;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0 1rem 0;
+  list-style: none;
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+/* Body Styling  */
+#container1 {
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+#overview {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  margin-left: 10px;
+  background-color: rgb(214, 214, 214, 0.7);
+  color: black;
+}
+
+#overview ul {
+  list-style: none;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+#overview h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.button {
+  width: 100px;
+}
+
+#hero-img {
+  width: 75%;
+  position: absolute;
+  top: 0;
+  right: 3rem;
+  z-index: -1;
+}
+
+#review-list ul {
+  line-height: 30px;
+  padding-left: 20px;
+  font-size: 19px;
+}
+
+#updates {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+#updates a {
+  font-size: 20px;
+}
+
+.img-cont {
+  padding: 1rem;
+  background-color: lightgrey;
+  height: 100px;
+}
+
+.img-cont img {
+  height: 100%;
+  object-fit: cover;
+}
