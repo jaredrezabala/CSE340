@@ -3,6 +3,7 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
 #top-header {
