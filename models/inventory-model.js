@@ -11,9 +11,9 @@ async function getClassifications() {
 /* ***************************
  *  Get all inventory data
  * ************************** */
-async function getInventoriesItems() {
-  return await pool.query("SELECT * FROM public.inventory ORDER BY inv_make");
-}
+// async function getInventoriesItems() {
+//   return await pool.query("SELECT * FROM public.inventory ORDER BY inv_make");
+// }
 
 /* ***************************
  *  Get all inventory items and classification_name by classification_id
@@ -51,5 +51,5 @@ module.exports = {
   getClassifications,
   getInventoryByClassificationId,
   getInventoryByItemId,
-  getInventoriesItems,
+  // getInventoriesItems,
 };

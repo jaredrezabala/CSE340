@@ -22,7 +22,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
  *  Build inventory by item detail view
  * ************************** */
 const inv_Item = {};
-inv_Item.buildByItemId = async function (req, res, next) {
+invCont.buildByItemId = async function (req, res, next) {
   const inv_id = req.params.inv_Id;
   const data = await invModel.getInventoryByItemId(inv_id);
   const grid = await utilities.buildItemView(data);
@@ -37,4 +37,3 @@ inv_Item.buildByItemId = async function (req, res, next) {
 };
 
 module.exports = invCont;
-module.exports = inv_Item;
