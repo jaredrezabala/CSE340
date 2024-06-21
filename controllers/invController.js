@@ -18,4 +18,23 @@ invCont.buildByClassificationId = async function (req, res, next) {
     grid,
   });
 };
+/* ***************************
+ *  Build inventory by item detail view
+ * ************************** */
+const inv_Item = {};
+inv_Item.buildByItemId = async function (req, res, next) {
+  const inv_id = req.params.inv_Id;
+  const data = await invModel.getInventoryByItemId(inv_id);
+  const grid = await utilities.buildItemView(data);
+  let nav = await utilities.getNav();
+  const item = data[0].inv_make;
+  console.log(item);
+  res.render("./inventory/items", {
+    title: item + " Details",
+    nav,
+    grid,
+  });
+};
+
 module.exports = invCont;
+module.exports = inv_Item;
