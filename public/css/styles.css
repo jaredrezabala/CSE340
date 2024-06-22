@@ -29,9 +29,12 @@ nav ul {
   padding: 1rem 0 1rem 0;
   list-style: none;
   background-color: black;
-  color: white;
+  /* color: white; */
 }
-
+nav ul a {
+  color: white;
+  text-decoration: none;
+}
 h1 {
   font-size: 25px;
 }
@@ -103,4 +106,35 @@ h1 {
 .img-cont img {
   height: 100%;
   object-fit: cover;
+}
+
+/* Classifications View */
+#inv-display {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  text-align: center;
+  padding: 0;
+  /* text-wrap: wrap; */
+}
+#inv-display li {
+  margin: 0 auto 1rem;
+  border: solid 2px lightgray;
+  height: auto;
+  width: 270px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#inv-display img {
+  width: 100%;
+  height: 150px;
+}
+#inv-display hr {
+  height: 5px;
+  background-color: black;
+}
+.namePrice {
+  padding: 2em;
+}
+.namePrice a {
+  color: black;
 }
