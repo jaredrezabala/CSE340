@@ -138,13 +138,13 @@ Util.buildItemView = async function (data) {
     grid += `<h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>`;
     grid += `<img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" />`;
     grid += `<p>${vehicle.inv_description}</p>`;
-    grid += `<p>Price: $${new Intl.NumberFormat("en-US").format(
-      vehicle.inv_price
-    )}</p>`;
-    grid += `<p>Miles: ${new Intl.NumberFormat("en-US").format(
-      vehicle.inv_miles
-    )}</p>`;
-    grid += `<p>Color: ${vehicle.inv_color}</p>`;
+    grid += `<p class="font-style">Price: $${new Intl.NumberFormat(
+      "en-US"
+    ).format(vehicle.inv_price)}</p>`;
+    grid += `<p class="font-style">Miles: ${new Intl.NumberFormat(
+      "en-US"
+    ).format(vehicle.inv_miles)}</p>`;
+    grid += `<p class="font-style">Color: ${vehicle.inv_color}</p>`;
     grid += "</div>";
   } else {
     grid += '<p class="notice">Sorry, no matching vehicle could be found.</p>';
