@@ -1,5 +1,6 @@
 /******* Change Box Model ***************/
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
 *,
 *:before,
 *:after {
@@ -138,6 +139,7 @@ h1 {
 }
 .namePrice a {
   color: black;
+  text-decoration: none;
 }
 
 /* Item detailed view */
@@ -154,4 +156,29 @@ h1 {
   font-weight: 700;
   font-style: normal;
   color: #b50c0c;
+}
+/* error page styling */
+#error-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+#error-h {
+  font-size: 80px;
+  color: #b50c0c;
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 0;
+}
+#error-div p {
+  font-size: 30px;
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.error-img {
+  width: 70%;
+  margin: 0 auto;
 }
