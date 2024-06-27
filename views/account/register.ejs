@@ -1,0 +1,47 @@
+<div id="account-div">
+  <% if (title) { %>
+
+  <h1 id="account-h"><%= title %></h1>
+  <%- messages() %> <% } else { res.redirect('/') } %>
+  <div class="login-container">
+    <form action="/account/registerAcc" method="POST">
+      <label>First name:<input type="text" name="account_firstname" required /></label>
+      <label>Last name:<input type="text" name="account_lastname" required /></label>
+      <label>Email:<input type="email" name="account_email" required /></label>
+      <label>Password:<div class="password-container">
+        <input type="password" name="account_password" id="pword" required />
+        <span id="pswdBtn">👁️</span>
+      </div></label>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const pswdBtn = document.querySelector("#pswdBtn");
+  pswdBtn.addEventListener("click", function () {
+    const pswdInput = document.getElementById("pword");
+    const type = pswdInput.getAttribute("type");
+    if (type == "password") {
+      pswdInput.setAttribute("type", "text");
+      pswdBtn.innerHTML = "⛔";
+    } else {
+      pswdInput.setAttribute("type", "password");
+      pswdBtn.innerHTML = "👁️";
+    }
+  });
+
+//   function validatePassword() {
+//     const password = document.getElementById("pword").value;
+//     const valid =
+//       "/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/";
+
+//     if (!valid.test(password)) {
+//       alert(
+//         "Password must be at least 12 characters long, contain at least one capital letter, one number, and one special character."
+//       );
+//       return false;
+//     }
+//     return true;
+//   }
+</script>
