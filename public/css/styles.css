@@ -109,7 +109,16 @@ h1 {
   height: 100%;
   object-fit: cover;
 }
-
+/* flash msg */
+.notice li {
+  list-style: none;
+  color: #b50c0c;
+  font-size: 25px;
+  font-style: italic;
+}
+.notice {
+  padding-left: 0px;
+}
 /* Classifications View */
 #inv-display {
   display: flex;
