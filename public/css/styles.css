@@ -266,7 +266,17 @@ h1 {
   flex: 1;
   padding-right: 30px;
 }
-
+.login-container input:required:invalid,
+input:focus:invalid {
+  border-bottom: red solid 10px;
+}
+.login-container input:required:valid {
+  border-bottom: green solid 10px;
+}
+#pass-msg {
+  font-size: 15px;
+  text-align: center;
+}
 #pswdBtn {
   cursor: pointer;
   margin-left: -35px;
