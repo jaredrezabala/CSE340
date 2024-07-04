@@ -85,13 +85,11 @@ validate.loginRules = () => {
       .normalizeEmail() // refer to validator.js docs
       .withMessage("A valid email is required.")
       .custom(async (account_email) => {
-        const userEmailExists = await accountModel.checkUserLogin(
+        const userEmailExists = await accountModel.checkExistingEmail(
           account_email
         );
         if (!userEmailExists) {
           throw new Error("Email does not exist");
-        }else{
-          return true;
         }
       }),
     // password is required and must be associated with the email entered
@@ -101,14 +99,12 @@ validate.loginRules = () => {
       .withMessage("Password is required")
       .custom(async (account_password, { req }) => {
         const account_email = req.body.account_email;
-        const account_passwordExists = await accountModel.checkUserPassword(
+        const validCredentials = await accountModel.authenticateUser(
           account_email,
           account_password
           );
-        if(!account_passwordExists){
+        if(!validCredentials){
           throw new Error("Incorrect Password. Please try again");
-        }else{
-          return true;
         }
       })
   ];

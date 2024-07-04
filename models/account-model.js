@@ -34,29 +34,23 @@ async function checkExistingEmail(account_email) {
 /* *****************************
  *   Login Process
  * *************************** */
-async function checkUserLogin(account_email, account_password) {
+async function authenticateUser(account_email, account_password) {
   try {
-    const sql2 =
-      "SELECT * FROM account WHERE account_email = $1 AND account_password = $2";
-    const result = await pool.query(sql2, [account_email, account_password]);
-    return result.rowCount;
-  } catch (error) {
-    return error.message;
-  }
-}
-async function checkUserPassword(account_email, account_password) {
-  try {
-    const sql3 = "SELECT * FROM account WHERE account_email = $1 AND account_password = $2";
-    const result = await pool.query(sql3, [account_email, account_password]);
-    return result.rows.length > 0;
-    } catch (error) {
-      return error.message;
-  }
-}
+    const sql = "SELECT * FROM account WHERE account_email = $1 AND account_password = $2";
+    const result = await pool.query(sql, [account_email, account_password]);
 
+    // Verifica si hay algún resultado encontrado en la base de datos
+    if (result.rowCount > 0) {
+      return true; // Credenciales válidas
+    } else {
+      return false; // Credenciales inválidas
+    }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
 module.exports = {
   registerAccount,
   checkExistingEmail,
-  checkUserLogin,
-  checkUserPassword,
+  authenticateUser,
 };
