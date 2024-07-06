@@ -3,6 +3,7 @@ const router = new express.Router();
 const utilities = require("../utilities/");
 const invController = require("../controllers/invController");
 const manageCont = require("../controllers/manageController");
+const regValidate = require("../utilities/account-validation");
 
 /*
 ***Important Note***
@@ -18,7 +19,8 @@ router.get("/", utilities.handleErrors(manageCont.buildManage));
 
 //Route to add new class
 router.get("/newClass", utilities.handleErrors(manageCont.buildNewClass));
-
+//Process adding new class
+router.post("/newClass", utilities.handleErrors(manageCont.processNewClass));
 //Route to add new vehicle
 router.get("/newVehicle", utilities.handleErrors(manageCont.buildNewVehicle));
 

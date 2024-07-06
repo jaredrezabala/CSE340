@@ -20,7 +20,7 @@ router.get(
   utilities.handleErrors(accountController.buildRegister)
 );
 router.post(
-  "/registerAcc",
+  "/register",
   regValidate.registationRules(),
   regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)

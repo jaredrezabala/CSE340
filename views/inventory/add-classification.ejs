@@ -4,5 +4,25 @@
       res.redirect('/')
     } %>
     <p>Add new class</p>
-    <%#- grid %>
-    <%# messages() %>
+ 
+    <% messages() %>
+
+    <% if (errors) { %>
+      <ul class="notice2">
+     <% errors.array().forEach(error => { %>
+       <li><%= error.msg %></li>
+    <%  }) %>
+     </ul>
+    <% } %>
+    <!-- What I did to solve this issue was to change the action route to be the same as the route of the page where the 
+     form is being display inv/newClass, but why then the registerAcc worked?-->
+    <div class="login-container">
+      <form action="/inv/newClass" method="POST">
+        <fieldset>
+        <legend>Field is required</legend>
+        <label>Classification Name: <span id="addClassSpan">NAME MUST BE ALPHABETIC CHARACTERS ONLY</span> <input type="text" name="classification_name" id="newClassification" required value="<%= locals.account_firstname %>"/></label>
+        <button type="submit">Add Classification</button>
+      </fieldset>
+      </form>
+    </div>
+  </div>

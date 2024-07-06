@@ -1,4 +1,5 @@
 const utilities = require("../utilities")
+const invModel = require("../models/inventory-model")
 
 const mngtCont = {}
 /* ---IMPORTANT NOTES-----
@@ -8,7 +9,7 @@ in this case ./inventory/management
     */
 mngtCont.buildManage = async function (req, res, next){
     let nav = await utilities.getNav();
-    res.render("./inventory/management",
+    res.render("inventory/management",
         {
             title: "Inventory Management",
             nav,
@@ -18,7 +19,7 @@ mngtCont.buildManage = async function (req, res, next){
 }
 mngtCont.buildNewClass = async function (req, res, next){
     let nav = await utilities.getNav();
-    res.render("./inventory/add-classification",
+    res.render("inventory/add-classification",
         {   
             title: "Add Classification",
             nav,
@@ -26,9 +27,26 @@ mngtCont.buildNewClass = async function (req, res, next){
         }
         )
 }
+mngtCont.processNewClass = async function(req, res, next){
+    const { classification_name } = req.body;
+    const result = await invModel.addClassification(classification_name)
+    let nav = await utilities.getNav()
+    if(result){
+        res.status(201).render("inventory/management", {
+            title: "Inventory Management",
+            nav,
+    })
+    }else{
+        req.flash("notice", "Sorry, Please entered a valid classification.");
+        res.status(501).render("inventory/add-classification", {
+        title: "Add Classification",
+        nav,
+    });
+    }
+}
 mngtCont.buildNewVehicle = async function (req, res, next){
     let nav = await utilities.getNav();
-    res.render("./inventory/add-inventory",
+    res.render("inventory/add-inventory",
         {
             title: "Add New Vehicle",
             nav,

@@ -51,12 +51,14 @@ async function registerAccount(req, res) {
     res.status(201).render("account/login", {
       title: "Login",
       nav,
+      errors: null
     });
   } else {
     req.flash("notice", "Sorry, the registration failed.");
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
+      errors: null
     });
   }
 }
@@ -70,6 +72,7 @@ async function loginAccount(req, res) {
     account_email,
     account_password
   );
+  //parece que el res.statud acontinuacion no estan funcionando proque cuando se logea deberia redirigir a la pagina de inicio pero nada esta es usando lo otro que esta en el accountRoute, sera que talvez si comento eso que esta en el account route haga que lo que tengo aqui funcione?
   if (loginResult) {
     req.flash(
       "notice",
@@ -78,6 +81,7 @@ async function loginAccount(req, res) {
     res.status(201).render("/", {
       title: "Home",
       nav,
+      errors: null
     });
   } else {
     req.flash(
@@ -87,6 +91,7 @@ async function loginAccount(req, res) {
     res.status(501).render("account/login", {
       title: "Login",
       nav,
+      errors: null
     });
   }
 }
