@@ -34,5 +34,13 @@ invCont.buildByItemId = async function (req, res, next) {
     grid,
   });
 };
-
+/* ***************************
+ *  Add new classification to Nav
+ * ************************** */
+// invCont.addClassificationToNav = async function (req, res, next) {
+//   const classification_name = req.params.classification_Name;
+//   const data = await invModel.addClassification(classification_name);
+//   let nav = await utilities.getNav();
+//   return nav += data
+// }
 module.exports = invCont;
