@@ -1,8 +1,35 @@
+<div id="account-div">
 <% if (title) { %>
-    <h1><%= title %></h1>
+    <h1 id="account-h"><%= title %></h1>
     <% } else {
       res.redirect('/')
-    } %>
-    <p>add new car</p>
-    <%#- grid %>
-    <%# messages() %>
+    } %>    
+    <% messages() %>
+    <% if (errors) { %>
+      <ul class="notice2">
+     <% errors.array().forEach(error => { %>
+       <li><%= error.msg %></li>
+    <%  }) %>
+     </ul>
+    <% } %>
+     <!-- <%#- classificationList %> this is usefull to pass functions and <%#= classificationList %> passes literal text not the value inside the function-->
+    <div class="login-container">
+      <form action="/inv/newVehicle" method="POST">
+        <fieldset>
+          <legend>ALL FIELDS ARE REQUIRED</legend>
+        <label id="drop-down">Classification: <%- classificationList %></label>
+        <label>Make:<input type="text" name="inv_make" id="itemMake" required value="<%= locals.inv_make %>"/></label>
+        <label>Model:<input type="text" name="inv_model" id="invModel" required value="<%= locals.inv_model %>"/></label>
+        <label>Description:<textarea cols="7" rows="10" name="inv_description" required value="<%= locals.inv_description %>"></textarea></label>
+        <label>Image Path:<input type="text" name="inv_image" id="invImage" required value="/images/vehicles/no-image.png"/></label>
+        <label>Thumbnail:<input type="text" name="inv_thumbnail" id="invThumbnail" required value="/images/vehicles/no-image.png"/></label>
+        <label>Price:<input type="number" name="inv_price" id="invPrice" placeholder="decimal or integer" required value="<%= locals.inv_price %>"/></label>
+        <label>Year:<input type="number" name="inv_year" id="invYear" placeholder="4-digits year" required value="<%= locals.inv_year %>"/></label>
+        <label>Miles:<input type="number" name="inv_miles" id="invMiles" placeholder="digits only" required value="<%= locals.inv_miles %>"/></label>
+        <label>Color:<input type="text" name="inv_color" id="invColor" required value="<%= locals.inv_color %>"/></label>
+        <!-- <button type="submit">Add Vehicles</button> -->
+      </fieldset>
+      <button type="submit">Add Vehicles</button>
+      </form>
+    </div>
+  </div>

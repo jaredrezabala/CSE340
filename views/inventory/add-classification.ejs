@@ -1,9 +1,9 @@
+<div id="account-div">
 <% if (title) { %>
-    <h1><%= title %></h1>
+    <h1 id="account-h"><%= title %></h1>
     <% } else {
       res.redirect('/')
     } %>
-    <p>Add new class</p>
  
     <% messages() %>
 
@@ -20,9 +20,10 @@
       <form action="/inv/newClass" method="POST">
         <fieldset>
         <legend>Field is required</legend>
-        <label>Classification Name: <span id="addClassSpan">NAME MUST BE ALPHABETIC CHARACTERS ONLY</span> <input type="text" name="classification_name" id="newClassification" required value="<%= locals.account_firstname %>"/></label>
-        <button type="submit">Add Classification</button>
+        <label>Classification Name:<input type="text" name="classification_name" id="newClassification" required value="<%= locals.account_firstname %>"/></label>
+        <span id="pass-msg">NAME MUST BE ALPHABETIC CHARACTERS ONLY</span>
       </fieldset>
+      <button type="submit">Add Classification</button>
       </form>
     </div>
   </div>

@@ -23,6 +23,8 @@ router.get("/newClass", utilities.handleErrors(manageCont.buildNewClass));
 router.post("/newClass", utilities.handleErrors(manageCont.processNewClass));
 //Route to add new vehicle
 router.get("/newVehicle", utilities.handleErrors(manageCont.buildNewVehicle));
+//Process adding new inventory
+router.post("/newVehicle", utilities.handleErrors(manageCont.processNewVehicle));
 
 // Route to build inventory by classification view
 router.get(

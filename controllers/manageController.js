@@ -35,23 +35,50 @@ mngtCont.processNewClass = async function(req, res, next){
         res.status(201).render("inventory/management", {
             title: "Inventory Management",
             nav,
+            errors: null
     })
     }else{
         req.flash("notice", "Sorry, Please entered a valid classification.");
         res.status(501).render("inventory/add-classification", {
         title: "Add Classification",
         nav,
+        errors: null
     });
     }
 }
 mngtCont.buildNewVehicle = async function (req, res, next){
     let nav = await utilities.getNav();
+    let classificationList = await utilities.buildClassificationList();
     res.render("inventory/add-inventory",
         {
             title: "Add New Vehicle",
             nav,
+            classificationList,
             errors: null
         }
     )
+}
+mngtCont.processNewVehicle = async function(req, res, next){
+    let nav = await utilities.getNav();
+    let classificationList = await utilities.buildClassificationList()
+    const { inv_make, inv_model, inv_year, inv_description, inv_thumbnail, inv_image, inv_price, inv_miles, inv_color, classification_id } = req.body
+    const result = await invModel.addInventory(inv_make, inv_model, inv_year, inv_description, inv_thumbnail, inv_image, inv_price, inv_miles, inv_color, classification_id)
+    if(result){
+        req.flash("notice", `Congratulations, the ${inv_make} ${inv_model} was successfully added.`)
+        res.status(201).render("inventory/management", {
+            title: "Inventory Management",
+            nav,
+            classificationList,
+            errors: null
+        })
+    }else{
+        req.flash("notice", "Sorry, Please entered a valid vehicle information.")
+        res.status(501).render("inventory/add-inventory", {
+            title: "Add New Vehicle",
+            nav,
+            classificationList,
+            errors: null
+        })
+    }
 }
 module.exports = mngtCont

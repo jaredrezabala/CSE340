@@ -241,13 +241,34 @@ h1 {
   margin-top: 2rem;
   padding: 15px;
   margin: 1rem auto;
-  width: 50%;
+  width: 60%;
   background-color: #c4c4c4;
   color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 20px;
+}
+.login-container legend {
+  margin-bottom: 2rem;
+}
+.login-container textarea {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 20px;
+}
+.login-container textarea:required:invalid,
+textarea:focus:invalid {
+  border-bottom: red solid 10px;
+}
+.login-container textarea:required:valid {
+  border-bottom: green solid 10px;
+}
+#classificationList {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 20px;
 }
 .regiter-box {
   margin-top: 2rem;
