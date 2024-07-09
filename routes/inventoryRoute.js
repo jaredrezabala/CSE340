@@ -2,8 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const utilities = require("../utilities/");
 const invController = require("../controllers/invController");
-const manageCont = require("../controllers/manageController");
-const regValidate = require("../utilities/account-validation");
+const classValidate = require("../utilities/inventory-validation");
 
 /*
 ***Important Note***
@@ -14,17 +13,22 @@ eg.. I can present the details item view before the home page
 could be like trying to get into my room from a window, instead I need
 to open the front door, then my room door, etc etc
 */
+
+
 //Route to build the management inventory view
-router.get("/", utilities.handleErrors(manageCont.buildManage));
+router.get("/", utilities.handleErrors(invController.buildManage));
 
 //Route to add new class
-router.get("/newClass", utilities.handleErrors(manageCont.buildNewClass));
+router.get("/newClass", utilities.handleErrors(invController.buildNewClass));
+
 //Process adding new class
-router.post("/newClass", utilities.handleErrors(manageCont.processNewClass));
+router.post("/newClass", classValidate.newClassRules(), classValidate.checkNewClassData, utilities.handleErrors(invController.processNewClass));
+
 //Route to add new vehicle
-router.get("/newVehicle", utilities.handleErrors(manageCont.buildNewVehicle));
+router.get("/newVehicle", utilities.handleErrors(invController.buildNewVehicle));
+
 //Process adding new inventory
-router.post("/newVehicle", utilities.handleErrors(manageCont.processNewVehicle));
+router.post("/newVehicle", utilities.handleErrors(invController.processNewVehicle));
 
 // Route to build inventory by classification view
 router.get(
