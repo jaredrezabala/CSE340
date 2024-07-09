@@ -80,7 +80,8 @@ invCont.processNewClass = async function(req, res, next){
 }
 invCont.buildNewVehicle = async function (req, res, next){
   let nav = await utilities.getNav();
-  let classificationList = await utilities.buildClassificationList();
+  let classId = req.params.classification_id
+  let classificationList = await utilities.buildClassificationList(classId);
   res.render("./inventory/add-inventory",
       {
           title: "Add New Vehicle",
