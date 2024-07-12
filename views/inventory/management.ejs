@@ -3,8 +3,16 @@
     <% } else {
       res.redirect('/')
     } %>
+
+<% messages() %>
+
+<% if (errors) { %>
+  <ul class="notice2">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
     <a href="/inv/newClass">Add New Classification</a><br>
     <a href="/inv/newVehicle">Add New Vehicle</a>
-
-    <%#- grid %>
-    <%# messages() %>

@@ -28,7 +28,7 @@ router.post("/newClass", classValidate.newClassRules(), classValidate.checkNewCl
 router.get("/newVehicle", utilities.handleErrors(invController.buildNewVehicle));
 
 //Process adding new inventory
-router.post("/newVehicle", utilities.handleErrors(invController.processNewVehicle));
+router.post("/newVehicle", classValidate.newVehiclesRules(), classValidate.checkNewVehicleData, utilities.handleErrors(invController.processNewVehicle));
 
 // Route to build inventory by classification view
 router.get(
