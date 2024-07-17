@@ -5,7 +5,10 @@ const accountController = require("../controllers/accountController");
 const regValidate = require("../utilities/account-validation");
 
 // View to display once the login is successful
-router.get("/", utilities.handleErrors(accountController.buildAccountManagement))
+router.get(
+  "/",
+  utilities.handleErrors(accountController.buildAccountManagement)
+);
 
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 // Process the login attempt
