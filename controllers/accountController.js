@@ -26,7 +26,17 @@ async function buildRegister(req, res, next) {
     errors: null,
   });
 }
-
+/* ****************************************
+ *  Deliver Account Management view
+ * *************************************** */
+async function buildAccountManagement(req, res, next){
+  let nav = await utilities.getNav()
+  res.render("account/account-management", {
+    title: "Account Management",
+    nav,
+    errors: null,
+  });
+ } 
 /* ****************************************
  *  Process Registration
  * *************************************** */
@@ -137,18 +147,17 @@ async function accountLogin(req, res) {
        res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
      }
    return res.redirect("/account/")
-   }
+   }else{
+    req.flash("notice", "Please check your password and try again.")
+    res.status(400).render("./account/login", {
+    title: "Login",
+    nav,
+    errors: null,
+    account_email,
+})}
   } catch (error) {
    return new Error('Access Forbidden')
   }
  }
  
- async function buildAccountManagement(req, res, next){
-  let nav = await utilities.getNav()
-  res.render("account/account-management", {
-    title: "Account Management",
-    nav,
-    errors: null,
-  });
- } 
 module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement };
