@@ -80,36 +80,36 @@ async function registerAccount(req, res) {
 /* ****************************************
  *  Login Process
  * *************************************** */
-async function loginAccount(req, res) {
-  let nav = await utilities.getNav();
-  const { account_email, account_password } = req.body;
-  const loginResult = await accountModel.checkUserPassword(
-    account_email,
-    account_password
-  );
-  //parece que el res.statud acontinuacion no estan funcionando proque cuando se logea deberia redirigir a la pagina de inicio pero nada esta es usando lo otro que esta en el accountRoute, sera que talvez si comento eso que esta en el account route haga que lo que tengo aqui funcione?
-  if (loginResult) {
-    req.flash(
-      "notice",
-      `Congratulations, you\'re logged in ${account_firstname}.`
-    );
-    res.status(201).render("/", {
-      title: "Home",
-      nav,
-      errors: null
-    });
-  } else {
-    req.flash(
-      "notice",
-      "Sorry, You entered an invalid username or password."
-    );
-    res.status(501).render("account/login", {
-      title: "Login",
-      nav,
-      errors: null
-    });
-  }
-}
+// async function loginAccount(req, res) {
+//   let nav = await utilities.getNav();
+//   const { account_email, account_password } = req.body;
+//   const loginResult = await accountModel.checkUserPassword(
+//     account_email,
+//     account_password
+//   );
+//   //parece que el res.statud acontinuacion no estan funcionando proque cuando se logea deberia redirigir a la pagina de inicio pero nada esta es usando lo otro que esta en el accountRoute, sera que talvez si comento eso que esta en el account route haga que lo que tengo aqui funcione?
+//   if (loginResult) {
+//     req.flash(
+//       "notice",
+//       `Congratulations, you\'re logged in ${account_firstname}.`
+//     );
+//     res.status(201).render("/", {
+//       title: "Home",
+//       nav,
+//       errors: null
+//     });
+//   } else {
+//     req.flash(
+//       "notice",
+//       "Sorry, You entered an invalid username or password."
+//     );
+//     res.status(501).render("account/login", {
+//       title: "Login",
+//       nav,
+//       errors: null
+//     });
+//   }
+// }
 /* ****************************************
  *  Process login request
  * ************************************ */
@@ -151,4 +151,4 @@ async function accountLogin(req, res) {
     errors: null,
   });
  } 
-module.exports = { buildLogin, buildRegister, registerAccount, loginAccount, accountLogin, buildAccountManagement };
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement };

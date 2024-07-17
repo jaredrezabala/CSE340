@@ -17,7 +17,7 @@
           <% } %>
         <div class="login-container">
             <form action="/account/login" method="POST">
-                <label>Email:<input type="email" name="account_email" placeholder="Enter a valid address" required></label>
+                <label>Email:<input type="email" name="account_email" placeholder="Enter a valid address" required value="<%= locals.account_email %>"/></label>
                 <label>Password:<div class="password-container">
                     <input type="password" name="account_password" id="pword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required />
                     <span id="pswdBtn">👁️</span>
