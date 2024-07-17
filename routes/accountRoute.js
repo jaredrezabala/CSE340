@@ -10,10 +10,10 @@ router.post(
   "/login",
   regValidate.loginRules(),
   regValidate.checkLoginData,
-  (req, res) => {
-    res.status(200).send('login process');
-  }
+  utilities.handleErrors(accountController.accountLogin)
 );
+// View to display once the login is successful
+router.get("/account/", utilities.handleErrors(accountController.buildAccountManagement))
 
 router.get(
   "/register",
