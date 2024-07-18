@@ -244,7 +244,7 @@ invCont.itemDeleted = async function (req, res, next) {
     res.redirect("/inv/")
   } else {
     req.flash("notice", "There was an error deleting the inventory item")
-    res.redirect("/delete/:inv_id")
+    res.redirect(`/inv/delete/${inv_id}`)
   }
 }
 
