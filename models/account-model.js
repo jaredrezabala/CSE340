@@ -32,24 +32,6 @@ async function checkExistingEmail(account_email) {
   }
 }
 /* *****************************
- *   Login Process
- * *************************** */
-// async function authenticateUser(account_email, account_password) {
-//   try {
-//     const sql = "SELECT * FROM account WHERE account_email = $1 AND account_password = $2";
-//     const result = await pool.query(sql, [account_email, account_password]);
-
-//     // Verifica si hay algún resultado encontrado en la base de datos
-//     if (result.rowCount > 0) {
-//       return true; // Credenciales válidas
-//     } else {
-//       return false; // Credenciales inválidas
-//     }
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// }
-/* *****************************
 * Return account data using email address
 * ***************************** */
 async function getAccountByEmail (account_email) {

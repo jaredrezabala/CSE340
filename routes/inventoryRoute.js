@@ -41,4 +41,13 @@ router.get(
   "/detail/:inv_Id",
   utilities.handleErrors(invController.buildByItemId)
 );
+
+// Route to display inventory by classification ID in Mangament View
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
+// Route to modify Item by classification ID in Mangament View
+router.get("/edit/:inv_id", utilities.handleErrors(invController.modifyItem));
+
+// Process modifying the Item in the Database
+router.post("/update/", classValidate.newVehiclesRules(), classValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
 module.exports = router;
