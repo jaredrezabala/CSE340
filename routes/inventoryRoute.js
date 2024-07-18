@@ -51,3 +51,9 @@ router.get("/edit/:inv_id", utilities.handleErrors(invController.modifyItem));
 // Process modifying the Item in the Database
 router.post("/update/", classValidate.newVehiclesRules(), classValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
 module.exports = router;
+
+// Route to display the delete view 
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteItem));
+
+// Process deleting the intem
+router.post("/deleted/", utilities.handleErrors(invController.itemDeleted))

@@ -1,0 +1,24 @@
+<div id="account-div">
+<% if (title) { %>
+    <h1 id="account-h"><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>    
+    <% messages() %>
+    <div class="login-container">
+        <p>Confirm Deletion - The delete is permanent.</p>
+      <form action="/inv/deleted" method="POST">
+        <fieldset>
+        <label>Make:<input type="text" name="inv_make" id="itemMake" required value="<%= inv_make %>"/></label>
+        <label>Model:<input type="text" name="inv_model" id="invModel" required value="<%= inv_model %>"/></label>
+        <label>Price:<input type="text" name="inv_price" id="invPrice" placeholder="decimal or integer" required pattern="^\d+(\.\d{1,2})?$" title="Please enter a valid price (e.g., 100 or 100.00)" value="<%= inv_price %>"/></label>
+        <label>Year:<input type="text" name="inv_year" id="invYear" placeholder="4-digits year" required pattern="^\d{4}$" title="Please enter a valid 4-digit year (e.g., 2024)" value="<%= inv_year %>"/></label>
+      </fieldset>
+      <button type="submit">Delete Vehicle</button>
+      <input type="hidden" name="inv_id"
+<% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+<% } %>>
+      </form>
+    </div>
+  </div>
+
