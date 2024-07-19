@@ -16,7 +16,7 @@ to open the front door, then my room door, etc etc
 
 
 //Route to build the management inventory view
-router.get("/", utilities.handleErrors(invController.buildManage));
+router.get("/", utilities.checkLogin, utilities.checkAdminOrEmployee, utilities.handleErrors(invController.buildManage));
 
 //Route to add new class
 router.get("/newClass", utilities.handleErrors(invController.buildNewClass));

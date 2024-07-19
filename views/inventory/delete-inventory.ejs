@@ -4,7 +4,7 @@
     <% } else {
       res.redirect('/')
     } %>    
-    <% messages() %>
+    <%- messages() %>
     <div class="login-container">
         <p>Confirm Deletion - The delete is permanent.</p>
       <form action="/inv/deleted" method="POST">

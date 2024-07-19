@@ -145,12 +145,31 @@ Util.checkJWTToken = (req, res, next) => {
      }
      res.locals.accountData = accountData
      res.locals.loggedin = 1
+    //  console.log("Account Data:", accountData) this is a good line to see the data you are receiving
      next()
     })
   } else {
    next()
   }
  }
+ /* ****************************************
+* Middleware to check the account type
+**************************************** */
+Util.checkAdminOrEmployee = (req, res, next) =>{
+  if (res.locals.loggedin && res.locals.accountData){
+    const accountType = res.locals.accountData.account_type;
+    // console.log("Account Tyype:", accountType) this is a good line to see the data you are receiving
+    if(accountType ==="Employee" || accountType ==="Admin"){
+      next()
+    } else{
+      req.flash("notice", "You are not authorized to access this page")
+      return res.redirect("/account/login")
+    }
+  }else{
+    req.flash("notice","Please log in")
+    return res.redirect("/account/login")
+  }
+}
  /* ****************************************
  *  Check Login
  * ************************************ */
