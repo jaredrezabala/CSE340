@@ -35,6 +35,9 @@
               <span id="pass-msg">By entering a new password it will change the your current password</span><br>
             <span id="pass-msg">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span>        
             <button type="submit">Update Password</button>
+            <input type="hidden" name="account_id"
+            <% if(accountData.account_id) { %> value="<%= accountData.account_id %>"
+            <% } %>>
         </form>
     </div>
 </div>

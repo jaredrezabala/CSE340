@@ -189,8 +189,8 @@ async function editUserInfo(req, res){
 /* ****************************************
  *  Process password update request
  * ************************************ */
-async function editPassword(){
-  const { account_password } = req.body;
+async function editPassword(req, res){
+  const { account_password, account_id } = req.body;
    // Hash the password before storing
    let hashedPassword;
    try {
@@ -203,7 +203,7 @@ async function editPassword(){
      );
      res.redirect("account/edit");
     }
-  const updatedPass = await accountModel.updatePass(hashedPassword);
+  const updatedPass = await accountModel.updatePass(hashedPassword, account_id);
   if (updatedPass) {
     req.flash("notice", "Your password has been updated.");
     res.redirect("/account/");
@@ -212,7 +212,13 @@ async function editPassword(){
     res.redirect("/account/edit");
   }
 }
-
+/* ****************************************
+ *  Process logout
+ * ************************************ */
+async function logoutUser(req, res){
+  res.clearCookie("jwt");
+  res.redirect("/");
+}
 module.exports = {
   buildLogin,
   buildRegister,
@@ -221,5 +227,6 @@ module.exports = {
   buildAccountManagement,
   buildEditAccountView,
   editUserInfo,
-  editPassword
+  editPassword,
+  logoutUser
 };

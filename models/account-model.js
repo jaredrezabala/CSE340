@@ -73,13 +73,14 @@ async function updateUser (account_firstname, account_lastname, account_email, a
 /* *****************************
 * Update password account
 * ***************************** */
-async function updatePass (account_id, account_password) {
+async function updatePass ( account_password, account_id ) {
   try {
     const sql = 'UPDATE account SET account_password = $1 WHERE account_id = $2'
-    const result = await pool.query(sql, [account_id, account_password])
-    return result.rows[0];
+    const result = await pool.query(sql, [ account_password, account_id])
+    return result;
     } catch (error) {
-      return error.message;
+      // return error.message;
+      throw error;
   }
 }
 module.exports = {

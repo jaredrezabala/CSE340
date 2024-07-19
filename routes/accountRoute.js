@@ -36,5 +36,6 @@ router.get("/edit", utilities.handleErrors(accountController.buildEditAccountVie
 router.post("/editAccount", utilities.handleErrors(accountController.editUserInfo))
 // Process the edit of the password
 router.post("/updatePass", utilities.handleErrors(accountController.editPassword))
-
+//Process to logout
+router.get("/logout", utilities.handleErrors(accountController.logoutUser))
 module.exports = router;
