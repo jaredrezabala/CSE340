@@ -149,6 +149,50 @@ async function accountLogin(req, res) {
     throw new Error("Access Forbidden");
   }
 }
+/* ****************************************
+ *  Process user update request
+ * ************************************ */
+async function editUserInfo(req, res){
+  const { account_firstname, account_lastname, account_email } = req.body;
+  const updatedUser = await accountModel.updateUser(
+    account_firstname,
+    account_lastname,
+    account_email
+  )
+  if (updatedUser) {
+    req.flash("notice", "Your account information has been updated.");
+    res.redirect("/account/");
+  }else{
+    req.flash("notice", "Please check your information and try again.");
+    res.redirect("/account/edit");
+  }
+}
+/* ****************************************
+ *  Process password update request
+ * ************************************ */
+async function editPassword(){
+  const { account_password } = req.body;
+   // Hash the password before storing
+   let hashedPassword;
+   try {
+     // regular password and cost (salt is generated automatically)
+     hashedPassword = await bcrypt.hashSync(account_password, 10);
+   } catch (error) {
+     req.flash(
+       "notice",
+       "Sorry, there was an error updating your password."
+     );
+     res.redirect("account/edit");
+    }
+  const updatedPass = await accountModel.updatePass(hashedPassword);
+  if (updatedPass) {
+    req.flash("notice", "Your password has been updated.");
+    res.redirect("/account/");
+  }else{
+    req.flash("notice", "Please check your password and try again.");
+    res.redirect("/account/edit");
+  }
+}
 
 module.exports = {
   buildLogin,
@@ -156,5 +200,7 @@ module.exports = {
   registerAccount,
   accountLogin,
   buildAccountManagement,
-  buildEditAccountView
+  buildEditAccountView,
+  editUserInfo,
+  editPassword
 };
