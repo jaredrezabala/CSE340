@@ -153,8 +153,8 @@ async function accountLogin(req, res) {
  *  Process user update request
  * ************************************ */
 async function editUserInfo(req, res){
-  const account_id = parseInt(req.params.account_id)
-  const { account_firstname, account_lastname, account_email } = req.body;
+  // const account_id = parseInt(req.params.account_id)
+  const { account_firstname, account_lastname, account_email, account_id } = req.body;
   const updatedUser = await accountModel.updateUser(
     account_firstname,
     account_lastname,
@@ -163,6 +163,23 @@ async function editUserInfo(req, res){
   )
   if (updatedUser) {
     req.flash("notice", "Your account information has been updated.");
+    // res.locals.accountData.account_firstname = updatedUser.rows[0].account_firstname
+    // res.locals.accountData.account_lastname = updatedUser.rows[0].account_lastname
+    // res.locals.accountData.account_email = updatedUser.rows[0].account_email
+    const accessToken = jwt.sign(
+      updatedUser.rows[0],
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: 3600 }
+    );
+    if (process.env.NODE_ENV === "development") {
+      res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 });
+    } else {
+      res.cookie("jwt", accessToken, {
+        httpOnly: true,
+        secure: true,
+        maxAge: 3600 * 1000,
+      });
+    }
     res.redirect("/account/");
   }else{
     req.flash("notice", "Please check your information and try again.");

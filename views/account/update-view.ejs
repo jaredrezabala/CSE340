@@ -19,8 +19,9 @@
             <label>Last name:<input type="text" name="account_lastname" required value="<%= accountData.account_lastname %>"/></label>
             <label>Email:<input type="email" name="account_email" required value="<%= accountData.account_email %>"/></label>
             <button type="submit">Update Account</button>
-            <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
-            <% } %>
+            <input type="hidden" name="account_id" 
+            <% if(accountData.account_id) { %> value="<%= accountData.account_id %>"
+            <% } %>>
         </form>
     </div><br>
     <h2>Update Password</h2><br>

@@ -237,7 +237,7 @@ invCont.deleteItem = async function(req, res, next) {
  *  Delete Inventory Data
  * ************************** */
 invCont.itemDeleted = async function (req, res, next) {
-  const inv_id = parseInt(req.params.inv_id)
+  const inv_id = parseInt(req.body.inv_id)
   const deleteResult = await invModel.deleteInventoryItem(inv_id)
   if (deleteResult) {
     req.flash("notice", "Inventory item deleted successfully")
