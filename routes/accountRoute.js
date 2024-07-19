@@ -33,7 +33,7 @@ router.post(
 // Route to display edit account view
 router.get("/edit", utilities.handleErrors(accountController.buildEditAccountView))
 // Process the edit account request
-router.post("/editAccount", regValidate.registationRules(), regValidate.checkRegData, utilities.handleErrors(accountController.editUserInfo))
+router.post("/editAccount", utilities.handleErrors(accountController.editUserInfo))
 // Process the edit of the password
 router.post("/updatePass", utilities.handleErrors(accountController.editPassword))
 

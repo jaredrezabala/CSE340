@@ -153,11 +153,13 @@ async function accountLogin(req, res) {
  *  Process user update request
  * ************************************ */
 async function editUserInfo(req, res){
+  const account_id = parseInt(req.params.account_id)
   const { account_firstname, account_lastname, account_email } = req.body;
   const updatedUser = await accountModel.updateUser(
     account_firstname,
     account_lastname,
-    account_email
+    account_email,
+    account_id
   )
   if (updatedUser) {
     req.flash("notice", "Your account information has been updated.");
