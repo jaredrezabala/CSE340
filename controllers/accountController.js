@@ -38,6 +38,17 @@ async function buildAccountManagement(req, res, next) {
   });
 }
 /* ****************************************
+ *  Deliver Edit Account View
+ * *************************************** */
+async function buildEditAccountView(req, res, next){
+  let nav = await utilities.getNav();
+  res.render("account/update-view",{
+    title: "Edit Account",
+    nav,
+    errors: null,
+    });
+  }
+/* ****************************************
  *  Process Registration
  * *************************************** */
 async function registerAccount(req, res) {
@@ -145,4 +156,5 @@ module.exports = {
   registerAccount,
   accountLogin,
   buildAccountManagement,
+  buildEditAccountView
 };

@@ -30,4 +30,7 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 );
 
+// Route to display edit account view
+router.get("/edit", utilities.handleErrors(accountController.buildEditAccountView))
+
 module.exports = router;
