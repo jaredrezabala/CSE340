@@ -302,3 +302,28 @@ input:focus:invalid {
   cursor: pointer;
   margin-left: -35px;
 }
+/* Account Management View Mobile */
+#accountMg {
+  text-align: center;
+}
+#accountMg h2 {
+  font-family: "Chakra Petch", sans-serif;
+}
+#accountMg hr {
+  width: 300px;
+  height: 10px;
+  background-color: #b50c0c;
+}
+#accountMg p {
+  padding-bottom: 2rem;
+}
+#accountMg a::before {
+  content: "🚩 ";
+}
+#accountMg a {
+  color: black;
+  text-decoration: none;
+}
+#accountMg h3 {
+  padding-top: 1rem;
+}

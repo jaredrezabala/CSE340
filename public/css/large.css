@@ -139,4 +139,14 @@
     margin-bottom: 0;
     margin-top: 0;
   }
+  /* Account Managemenent View Large */
+  #accountMg {
+    padding: 50px 0px 50px 0px;
+    width: 40%;
+    margin: 0 auto;
+  }
+  #invMg {
+    margin-left: 2rem;
+    width: 50%;
+  }
 }

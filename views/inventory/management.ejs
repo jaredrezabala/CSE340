@@ -13,13 +13,14 @@
 <%  }) %>
  </ul>
 <% } %>
-
+  <div id="invMg">
     <a href="/inv/newClass">Add New Classification</a><br>
     <a href="/inv/newVehicle">Add New Vehicle</a>
 <h2>Manage Inventory</h2>
 <p>Please select a classification from the list to see the items belonging to that category</p>
 <%- classificationList %>
 <table id="inventoryDisplay"></table>
+</div>
 <noscript>JavaScript must be enabled to use this page.</noscript>
 
 <script src="../../js/inventory.js"></script>
