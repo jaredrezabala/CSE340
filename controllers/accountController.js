@@ -213,6 +213,33 @@ async function editPassword(req, res){
   }
 }
 /* ****************************************
+ *  Build user view
+ * ************************************ */
+async function buildAdminView(req, res, next) {
+  let nav = await utilities.getNav();
+  let users = await accountModel.getAllUsers();
+  res.render("account/admin-management", {
+    title: "Admin Permissions",
+    nav,
+    users,
+    errors: null,
+  });
+}
+/* ****************************************
+ *  Process to grant user permissions
+ * ************************************ */
+async function grantUserPermissions(req, res, next) {
+  const { account_type, account_id } = req.body;
+  const updatedPermission = await accountModel.updateUserPermissions(account_type, account_id);
+  if (updatedPermission) {
+    req.flash("notice", "User permissions updated successfully.");
+    res.redirect("/account/");
+    } else {
+      req.flash("notice", "We couldnt update the users permision");
+      res.redirect("/account/admin");      
+    }
+}
+/* ****************************************
  *  Process logout
  * ************************************ */
 async function logoutUser(req, res){
@@ -228,5 +255,7 @@ module.exports = {
   buildEditAccountView,
   editUserInfo,
   editPassword,
-  logoutUser
+  logoutUser,
+  buildAdminView,
+  grantUserPermissions
 };

@@ -1,0 +1,49 @@
+    <% if (title) { %>
+        <h1 id="account-h"><%= title %></h1>
+        <% } else {
+          res.redirect('/')
+        } %>
+
+        <%- messages() %>
+
+        <% if (errors) { %>
+            <ul class="notice2">
+           <% errors.array().forEach(error => { %>
+             <li><%= error.msg %></li>
+          <%  }) %>
+           </ul>
+          <% } %>
+          <% if (locals.loggedin) { %>
+            <h2 class="tableh">Hi <%= locals.accountData.account_firstname %>!</h2>
+          <% } else { %>
+            <% } %>
+            <p class="tablep">Edit the Users Permissions below</p>
+            <table id="admin-users">
+            <thead>
+                <% users.forEach(user => { %>
+                <tr>
+                    <th>Email</th>
+                    <th>Account Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td><%= user.account_email %></td>
+                        <td>
+                            <form method="post" action="/account/grant">
+                            <input type="text" name="account_type" value="<%= user.account_type %>"></td>
+                        <td>
+                                <button type="submit">Update Permision</button>
+                                <input type="hidden" name="account_id" 
+                                 <% if(user.account_id) { %> value="<%= user.account_id %>"
+                                <% } %>>
+                            </form>
+                        </td>
+                    </tr>
+                 <% }) %>
+            </tbody>
+        </table>
+
+           
+   

@@ -83,11 +83,40 @@ async function updatePass ( account_password, account_id ) {
       throw error;
   }
 }
+/* *****************************
+* Select all users to show them in the admin view
+* ***************************** */
+async function getAllUsers() {
+  try {
+    const result = await pool.query("SELECT * FROM account");
+    return result.rows;
+  } catch (error) {
+    console.error("Error fetching users", error);
+    throw error;
+  }
+}
+/* *****************************
+*Update User permission
+* ***************************** */
+async function updateUserPermissions(account_type, account_id) {
+  try {
+    const result = await pool.query(
+      "UPDATE account  SET account_type = $1 WHERE account_id = $2 RETURNING *",
+      [account_type, account_id]
+    );
+    return result;
+  } catch (error) {
+    console.error("Error updating user permissions", error);
+    throw error;
+  }
+}
 module.exports = {
   registerAccount,
   checkExistingEmail,
   getAccountByEmail,
   getAccountById,
   updateUser,
-  updatePass
+  updatePass,
+  getAllUsers,
+  updateUserPermissions
 };

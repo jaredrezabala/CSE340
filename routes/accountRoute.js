@@ -38,4 +38,8 @@ router.post("/editAccount", regValidate.updateUserRules(), regValidate.checkEdit
 router.post("/updatePass", regValidate.updatePassRules(), regValidate.checkPassUpdate, utilities.handleErrors(accountController.editPassword))
 //Process to logout
 router.get("/logout", utilities.handleErrors(accountController.logoutUser))
+// Route to display admin view
+router.get("/admin", utilities.handleErrors(accountController.buildAdminView))
+// Process admin permissions
+router.post("/grant", utilities.handleErrors(accountController.grantUserPermissions));
 module.exports = router;

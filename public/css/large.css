@@ -149,4 +149,56 @@
     margin-left: 2rem;
     width: 50%;
   }
+  /* Admin Table */
+  #admin-users {
+    margin: 0 auto;
+  }
+
+  #admin-users thead {
+    background-color: #f4f4f4;
+  }
+
+  #admin-users th,
+  #admin-users td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #admin-users th {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  #admin-users tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  #admin-users tr:hover {
+    background-color: #ddd;
+  }
+
+  #admin-users select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  #admin-users button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  #admin-users button:hover {
+    background-color: #45a049;
+  }
 }

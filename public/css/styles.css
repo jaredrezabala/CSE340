@@ -327,3 +327,29 @@ input:focus:invalid {
 #accountMg h3 {
   padding-top: 1rem;
 }
+/* Admin Table */
+.tableh,
+.tablep {
+  text-align: center;
+  font-family: "Black Ops One", system-ui;
+}
+#admin-users {
+  width: 20%;
+  border-collapse: collapse;
+  /* margin: 20px 0 0; */
+  font-size: 16px;
+  color: #333;
+}
+#admin-users {
+  font-size: 14px;
+}
+
+#admin-users th,
+#admin-users td {
+  padding: 8px;
+}
+
+#admin-users button {
+  padding: 8px 16px;
+  font-size: 14px;
+}
