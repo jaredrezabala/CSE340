@@ -233,6 +233,20 @@ async function grantUserPermissions(req, res, next) {
   const updatedPermission = await accountModel.updateUserPermissions(account_type, account_id);
   if (updatedPermission) {
     req.flash("notice", "User permissions updated successfully.");
+    const accessToken = jwt.sign(
+      updatedPermission.rows[0],
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: 3600 }
+    );
+    if (process.env.NODE_ENV === "development") {
+      res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 });
+    } else {
+      res.cookie("jwt", accessToken, {
+        httpOnly: true,
+        secure: true,
+        maxAge: 3600 * 1000,
+      });
+    }
     res.redirect("/account/");
     } else {
       req.flash("notice", "We couldnt update the users permision");
